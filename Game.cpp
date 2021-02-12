@@ -23,5 +23,8 @@ Team Game::getAwayTeam(){ return m_awayTeam;}
 int Game::setHomeScore(int h) { return m_homeScore = h; } 
 int Game::setAwayScore(int s) { return m_awayScore = s; } 
 int Game::setTime(int t) { return m_time = t; } 
-void Game::setHomeTeam(Team h){ m_homeTeam = h;}
-void Game::setAwayTeam(Team h){ m_awayTeam = h;}
+void Game::setHomeTeam(Team &h){
+	m_homeTeam = h;
+	m_homeTeam.setHomeField();
+}
+void Game::setAwayTeam(Team &a){ m_awayTeam = a; }

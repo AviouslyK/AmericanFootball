@@ -16,6 +16,7 @@ public:
 	int getOff();
 	int getDef();
 	bool getHome();
+	bool hasBall();
 	std::string getName();
 	
 	// Setters
@@ -23,11 +24,14 @@ public:
 	void setDef(int def);
 	bool setHomeField();
 
+	void loseBall();
+	void giveBall();
 protected:
 	// Member variables
 	int m_off;
 	int m_def;
 	bool m_home = false;
+	bool m_hasBall;
 	std::string m_name;
 };
 

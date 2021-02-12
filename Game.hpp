@@ -1,4 +1,4 @@
-// Description: Team class
+// Description: Game class
 
 #ifndef GAME_H_
 #define GAME_H_
@@ -24,8 +24,10 @@ public:
 	int setHomeScore(int s);
 	int setAwayScore(int s);
 	int setTime(int t);
-	void setHomeTeam(Team h);
-	void setAwayTeam(Team a);
+	void setHomeTeam(Team &h);
+	void setAwayTeam(Team &a);
+	void setOffTeam(Team o);
+	void setDefTeam(Team d);
 
 	
 protected:
