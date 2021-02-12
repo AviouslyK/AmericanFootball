@@ -5,11 +5,11 @@
 #include <string>
 
 // Constructor for Team
-Team::Team(std::string teamName, int off, int def): m_off(off), m_def(def)
+Team::Team(std::string teamName, int off, int def):
+	m_name(teamName),
+	m_off(off),
+	m_def(def)
 {
-	m_name = teamName;
-	m_off  = off;
-	m_def  = def;
 }
 
 // Destructor

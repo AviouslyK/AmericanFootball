@@ -30,3 +30,6 @@ main
 
 #MAC Specific
 .DS_store
+
+#Temporary Files
+*~
