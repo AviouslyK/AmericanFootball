@@ -26,6 +26,7 @@ public:
 
 	void loseBall();
 	void giveBall();
+	void printDetails();
 protected:
 	// Member variables
 	int m_off;

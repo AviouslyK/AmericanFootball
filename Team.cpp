@@ -3,6 +3,7 @@
 #include "Team.hpp"
 
 #include <string>
+#include <iostream>
 
 // Constructor for Team
 Team::Team(std::string teamName, int off, int def):
@@ -28,3 +29,11 @@ bool Team::setHomeField() { return m_home = true;}
 bool Team::hasBall() { return m_hasBall; } // check if team has the ball
 void Team::loseBall() { m_hasBall = false; } // take possesion from team
 void Team::giveBall() { m_hasBall = false; } // give team possesion
+
+// Prints out some details on a Team
+void Team::printDetails() {
+	std::cout << "The " << m_name << " have Off: " << m_off;
+	std::cout << ", Def: " << m_def << std::endl;
+
+	if (m_home) std::cout << "The " << m_name << " have home field advantage"  << std::endl;
+}
