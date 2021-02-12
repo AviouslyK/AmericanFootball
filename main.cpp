@@ -1,51 +1,43 @@
-// Example Project
-// Author: Jake Lane
-// Student ID: a1686679
 // Description: Main Program
 
 #include <iostream>
 
-#include "Polygon.hpp"
-#include "Rectangle.hpp"
-#include "Triangle.hpp"
+#include "Team.hpp"
 
-// Prints out some details on a Polygon.
-// Note that it's not passing through a particular Polygon (like Triangle or Rectangle), rather it's the parent.
-void printDetails(Polygon* shape) {
-	std::cout << "Height: " << shape->getHeight();
-	std::cout << ", Width: " << shape->getWidth();
+// Prints out some details on a Team
+void printDetails(Team* t) {
+	std::cout << "The " << t->getName() << " have Off: " << t->getOff();
+	std::cout << ", Def: " << t->getDef() << std::endl;
 
-	// Pay particular attention to the results of area(). Even though it's a Polygon, the children produce different results for the function call.
-	std::cout << ", Area: " << shape->area();
-	std::cout << std::endl;
+	if (t->setHomeField()) std::cout << "The " << t->getName() << " have home field advantage"  << std::endl;
 }
 
 int main() {
-	// Create a rectangle on the heap with a height of 5 and a width of 6
-	Polygon* rectangle = new Rectangle(5, 6);
+	// Create Ravens Team
+	Team* Rav = new Team("Ravens", 89, 93);
 	// Print information using getters and method
-	printDetails(rectangle);
-	// Set the height to 10 with a setter
-	rectangle->setHeight(10);
-	// Set the width to 10 with a setter
-	rectangle->setWidth(10);
+	printDetails(Rav);
+	// Set the offensive strength to 100 with a setter
+	Rav->setOff(100);
+	// Set the defensive strength to 100 with a setter
+	Rav->setDef(100);
 	// Print information using getters and method
-	printDetails(rectangle);
+	printDetails(Rav);
 	// Cleanup the memory in the heap
-	delete rectangle;
+	delete Rav;
 
-	// Create a triangle on the heap with a height of 7 and a width of 9
-	Polygon* triangle = new Triangle(7, 9);
+	// Create Steelers Team
+	Team* Steel = new Team("Steelers", 77, 90);
 	// Print information using getters and method
-	printDetails(triangle);
-	// Set the height to 3 with a setter
-	triangle->setHeight(3);
-	// Set the width to 4 with a setter
-	triangle->setWidth(4);
+	printDetails(Steel);
+	// Set the offensive strength to 50 with a setter
+	Steel->setOff(50);
+	// Set the defensive strength to 50 with a setter
+	Steel->setDef(50);
 	// Print information using getters and method
-	printDetails(triangle);
+	printDetails(Steel);
 	// Cleanup the memory in the heap
-	delete triangle;
+	delete Steel;
 
 	return 0;
 }
