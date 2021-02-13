@@ -34,6 +34,7 @@ protected:
 	std::vector<Team> m_schedule;
 	std::vector<Team> m_teams;
 	Team m_myTeam;
+	bool m_schedule_set; // check to see if schedule is set
 };
 
 #endif // TEAM_H_

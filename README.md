@@ -1,4 +1,4 @@
 # ExampleCppProject
-An example C++ project using class headers, polymorphism, and a makefile
+An example C++ project 
 
 forked from Jake Lane's project: https://github.com/JakeLane/example-cpp-project

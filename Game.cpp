@@ -1,6 +1,8 @@
 // Description: Game class
 
 #include "Game.hpp"
+#include "Field.hpp"
+#include "Team.hpp"
 
 #include <string>
 
@@ -28,3 +30,10 @@ void Game::setHomeTeam(Team &h){
 	m_homeTeam.setHomeField();
 }
 void Game::setAwayTeam(Team &a){ m_awayTeam = a; }
+
+void Game::kickOff(Field& f, Team& offense, Team& defense){
+        defense.loseBall();
+        offense.giveBall();
+        f.setYard(25);
+        f.setDown(1);
+}

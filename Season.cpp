@@ -11,7 +11,7 @@
 
 // Constructor for Season
 Season::Season(Team me):
-	m_myTeam(me)
+	m_myTeam(me), m_schedule_set(false)
 {
 }
 
@@ -24,27 +24,27 @@ int Season::getLosses(){ return m_losses; }
 void Season::setWins(int& w){ m_wins = w; }
 void Season::setLosses(int& l){ m_losses = l; }
 
-Team Season::getOpponent(int& i){ return m_schedule[i]; }
+Team Season::getOpponent(int& i)
+{
+	if(m_schedule_set) return m_schedule[i];
+	else
+	{
+		Team err = Team("Schedule Not Set", 0, 0);
+		return err;
+	}
+}
 void Season::setSchedule(Team& t)
 {
 	m_schedule.clear();
-	int i = 0;
-	int j = 0;
-	while(m_schedule.size() <=16)
+	while(m_schedule.size() <16)
 	{
-		i++;
-		std::cout << "loop ran " << i << " times." << std::endl;
 		std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<> d(1,31);
 		int r = d(gen);
-		if (m_teams[r].getName() != t.getName())
-		{
-			m_schedule.push_back(m_teams[r]);
-			j++;
-			std::cout << "teams added = " << j << std::endl;
-		}
+		if (m_teams[r].getName() != t.getName()) m_schedule.push_back(m_teams[r]);
 	}
+	m_schedule_set = true;
 }
 
 void Season::readTeams(){

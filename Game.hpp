@@ -4,6 +4,8 @@
 #define GAME_H_
 
 #include "Team.hpp"
+#include "Field.hpp"
+
 #include <string>
 
 class Game {
@@ -28,7 +30,8 @@ public:
 	void setAwayTeam(Team &a);
 	void setOffTeam(Team o);
 	void setDefTeam(Team d);
-
+	
+	void kickOff(Field& f, Team& o, Team& d);  
 	
 protected:
 	// Member variables

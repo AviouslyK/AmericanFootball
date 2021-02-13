@@ -10,13 +10,6 @@
 #include "Field.hpp"
 #include "Season.hpp"
 
-void kickOff(Field& f, Team& offense, Team& defense){
-	defense.loseBall();
-	offense.giveBall();
-	f.setYard(25);
-	f.setDown(1);
-}
-
 void startGame(Game& g, Field& f, Team& h, Team& a){ 
 	g.setHomeTeam(h);
 	g.setAwayTeam(a);
@@ -111,12 +104,11 @@ void simSeason(Team& myTeam){
 	s.setSchedule(myTeam);
 	
 	// print schedule
-	for(int i=0; i<=16; i++) // week loop
+	for(int i=0; i<16; i++) // week loop
 	{
 		Team Op = s.getOpponent(i);
 		std::cout << "Week " << i+1 << " : " << Op.getName() << std::endl;
-	}
-   
+	}   
 }
 
 int main() {
@@ -129,7 +121,7 @@ int main() {
 	simSeason(Rav);
 	//startGame(game, fop, Rav, Steel);
 
-	//kickOff(fop,Rav,Steel);
+	//game.kickOff(fop,Rav,Steel);
 	//playGame(Rav,Steel);
 	/*
 	while (fop.checkTurnover() == false){
