@@ -23,32 +23,13 @@ void startGame(Game& g, Field& f, Team& h, Team& a){
 	std::cout << "The Home Team Starts with the Ball!" << std::endl;
 }
 
-void readPlay(int& down, int& yard){
-	switch(down)
-	{
-	case 1:
-		std::cout << "It's 1st and " << "TODO" << "on the " << yard << std::endl;
-		break;
-	case 2:
-		std::cout << "It's 2nd and " << "TODO" << "on the " << yard << std::endl;
-		break;
-	case 3:
-		std::cout << "It's 3rd and " << "TODO" << "on the " << yard << std::endl;
-		break;
-	case 4:
-		std::cout << "It's 4th and " << "TODO" << "on the " << yard << std::endl;
-		break;
-	default:
-		std::cout << "invalid down" << std::endl;
-	}
-}
 
 void doPlay(Field& f, Team& offense, Team& defense){
 
 	int down = f.getDown();
 	int yard = f.getYard();
 	// Read Play
-	readPlay(down, yard);
+	f.readPlay(down, yard);
 	// decide if pass or run
 
 	// calculate yards gained

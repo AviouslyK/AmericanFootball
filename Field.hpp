@@ -22,6 +22,7 @@ public:
 
 	void turnover();
 	bool checkTurnover();
+	void readPlay(int& down, int& yard);
 protected:
 	// Member variables
 	int m_down; // 1st down, 2nd down, etc.

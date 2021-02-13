@@ -57,9 +57,12 @@ void Season::readTeams(){
 		teamName = city + " " + name;
 		Team t = Team(teamName, off, def);
 		m_teams.push_back(t);
-		// debug
-		//std::cout << "team name from infile: " << teamName << std::endl;
-		//std::cout << "team from Team Object: " << t.getName() << std::endl;
+	}
+
+	//debug
+	for(auto& team: m_teams)
+	{
+		std::cout << team.getName() << std::endl;
 	}
 }
 
