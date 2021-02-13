@@ -18,7 +18,7 @@ public:
 	// Getters
 	int getWins();
 	int getLosses();
-	Team getOpponent(int& i); 
+	Team getOpponent(int& i);
 
 	// Setters
 	void setWins(int& w);
@@ -26,7 +26,7 @@ public:
 	void setSchedule(Team& t);
 
 	void readTeams();
-	
+	void printSchedule();
 protected:
 	// Member variables
 	int m_wins;

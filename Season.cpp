@@ -24,6 +24,12 @@ int Season::getLosses(){ return m_losses; }
 void Season::setWins(int& w){ m_wins = w; }
 void Season::setLosses(int& l){ m_losses = l; }
 
+void Season::printSchedule(){
+	for(int i=0; i<16; i++){ // week loop
+		Team Op = Season::getOpponent(i);
+		std::cout << "Week " << i+1 << " : " << Op.getName() << std::endl;
+	}   
+}
 Team Season::getOpponent(int& i)
 {
 	if(m_schedule_set) return m_schedule[i];
@@ -59,10 +65,11 @@ void Season::readTeams(){
 		m_teams.push_back(t);
 	}
 
-	//debug
+	/* debug
 	for(auto& team: m_teams)
 	{
 		std::cout << team.getName() << std::endl;
 	}
+	debug */
 }
 

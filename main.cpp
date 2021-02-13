@@ -66,6 +66,8 @@ std::vector<int> playGame(Team& t1, Team& t2){
 	std::normal_distribution<float> fg1_dist(3+adv1, 1.5);
 	std::normal_distribution<float> fg2_dist(3+adv2, 1.5);
 
+	//* TODO fix negative scores *//
+	
 	// calculate score
 	int td1; int td2; int fg1; int fg2;
 	std::vector<int> scores;
@@ -75,28 +77,46 @@ std::vector<int> playGame(Team& t1, Team& t2){
 	fg2 = fg2_dist(gen)*3;
 	scores.push_back(td1 + fg1);
 	scores.push_back(td2 + fg2);
-	// print score
-	std::cout << "Final Score:\n" << t1.getName() << " " << scores[0] << " " << t2.getName() << " " << scores[1] << std::endl;
+
 	return scores;
 }
+
 void simSeason(Team& myTeam){
 	Season s = Season(myTeam);
 	s.readTeams();	
 	s.setSchedule(myTeam);
-	
-	// print schedule
+	std::cout << "2020 Schedule:" << std::endl; // todo add year, maybe new Franchise class, for multiple seasons
+	s.printSchedule(); 
+
+	std::vector<int> score;
+	int wins = 0;
+	int losses = 0;
 	for(int i=0; i<16; i++) // week loop
 	{
-		Team Op = s.getOpponent(i);
-		std::cout << "Week " << i+1 << " : " << Op.getName() << std::endl;
-	}   
+		std::cout << "WEEK " << i+1 << std::endl;
+		Team op = s.getOpponent(i);
+		score = playGame(myTeam, op);
+		if(score[0] > score[1]) 
+		{
+			wins += 1;
+			s.setWins(wins);
+		}
+		else
+		{
+			losses += 1;
+			s.setLosses(losses);
+		}
+		std::cout << "Final Score:\t" << myTeam.getName() << " " << score[0] << " " << op.getName() << " " << score[1] << std::endl;
+		std::cout << "After Week " << i+1 << " the " << myTeam.getName() << " are " << wins << "-" << losses << "\n\n";
+	}
+	
 }
 
 int main() {
 	// Start the Game!
 	Game game;
 	Field fop; // field of play
-	Team Rav = Team("Ravens", 95, 93);
+	Team Rav = Team("Ravens", 90, 90);
 	Team Steel = Team("Steelers", 77, 85);
 	Rav.setName("BALTIMORE RAVENS");
 	simSeason(Rav);
