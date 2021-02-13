@@ -24,6 +24,7 @@ bool Team::getHome() { return m_home; } // Check for Home-Field advantage
 
 void Team::setOff(int off) { m_off = off; } // set offensive strength
 void Team::setDef(int def) { m_def = def; } // Set the defensive strength 
+void Team::setName(std::string n) { m_name = n;}
 bool Team::setHomeField() { return m_home = true;}
 
 bool Team::hasBall() { return m_hasBall; } // check if team has the ball

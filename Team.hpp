@@ -22,6 +22,7 @@ public:
 	// Setters
 	void setOff(int off);
 	void setDef(int def);
+	void setName(std::string n);
 	bool setHomeField();
 
 	void loseBall();

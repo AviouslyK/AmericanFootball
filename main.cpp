@@ -8,7 +8,7 @@
 #include "Team.hpp"
 #include "Game.hpp"
 #include "Field.hpp"
-
+#include "Season.hpp"
 
 void kickOff(Field& f, Team& offense, Team& defense){
 	defense.loseBall();
@@ -75,7 +75,7 @@ void doPlay(Field& f, Team& offense, Team& defense){
 
 }
 
-void playGame(Team& t1, Team& t2){
+std::vector<int> playGame(Team& t1, Team& t2){
 
 	
 	/* Get Team Strength */
@@ -93,18 +93,30 @@ void playGame(Team& t1, Team& t2){
 	std::normal_distribution<float> fg2_dist(3+adv2, 1.5);
 
 	// calculate score
-	int td1; int td2; int fg1; int fg2; int score1; int score2;
+	int td1; int td2; int fg1; int fg2;
+	std::vector<int> scores;
 	td1 = td1_dist(gen)*7;
 	td2 = td2_dist(gen)*7;
 	fg1 = fg1_dist(gen)*3;
 	fg2 = fg2_dist(gen)*3;
-	score1 = td1 + fg1;
-	score2 = td2 + fg2;
+	scores.push_back(td1 + fg1);
+	scores.push_back(td2 + fg2);
 	// print score
-	std::cout << "Final Score:\n" << t1.getName() << " " << score1 << " " << t2.getName() << " " << score2 << std::endl;
+	std::cout << "Final Score:\n" << t1.getName() << " " << scores[0] << " " << t2.getName() << " " << scores[1] << std::endl;
+	return scores;
 }
 void simSeason(Team& myTeam){
-	// maybe have season class, with record and schedule attribute?
+	Season s = Season(myTeam);
+	s.readTeams();	
+	s.setSchedule(myTeam);
+	
+	// print schedule
+	for(int i=0; i<=16; i++) // week loop
+	{
+		Team Op = s.getOpponent(i);
+		std::cout << "Week " << i+1 << " : " << Op.getName() << std::endl;
+	}
+   
 }
 
 int main() {
@@ -113,10 +125,12 @@ int main() {
 	Field fop; // field of play
 	Team Rav = Team("Ravens", 95, 93);
 	Team Steel = Team("Steelers", 77, 85);
-	startGame(game, fop, Rav, Steel);
+	Rav.setName("BALTIMORE RAVENS");
+	simSeason(Rav);
+	//startGame(game, fop, Rav, Steel);
 
-	kickOff(fop,Rav,Steel);
-	playGame(Rav,Steel);
+	//kickOff(fop,Rav,Steel);
+	//playGame(Rav,Steel);
 	/*
 	while (fop.checkTurnover() == false){
 		doPlay(fop,Rav,Steel);
